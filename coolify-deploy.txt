@@ -1,26 +1,36 @@
 Coolify — redeploy „one click” pentru mail-api (compose)
 =========================================================
 
-1) În Coolify: New Resource → Docker Compose (sau „Application” cu Compose).
+1) În Coolify: New Resource → Docker Compose.
 
-2) Conectează repo-ul Git, branch-ul (ex. main), root = folderul unde e compose.yaml.
+2) Conectează repo-ul Git, branch (ex. main), base directory = rădăcina repo-ului.
 
-3) Cale fișier Compose: compose.yaml (în rădăcina repo-ului).
+3) Fișier Compose: compose.yaml
 
-4) Environment Variables (în UI Coolify sau fișier .env pe server, lângă compose):
-   • ALLOWED_ORIGINS — obligatoriu, ex. https://highvibescreation.com,https://www.highvibescreation.com
-   • SMTP_HOST — dacă Postfix e pe același VPS: host.docker.internal (deja default în compose)
-   • SMTP_PORT / SMTP_SECURE / SMTP_USER / SMTP_PASS — după cum ai configurat Postfix
-   • MAIL_FROM, MAIL_TO
-   • Opțional: MAIL_API_PORT dacă mapezi alt port
+4) Environment Variables — ce trebuie completat (lista completă + comentarii):
+      Fișier din repo: coolify-env.template
+      Copiază liniile KEY=value în Coolify → Environment (sau import .env dacă există).
 
-5) Deploy / Redeploy: Coolify face build din mail-api/Dockerfile și pornește serviciul.
-   Healthcheck: GET /health — dacă e verde, API-ul e sus.
+   Obligatoriu:
+      ALLOWED_ORIGINS — ex. https://highvibescreation.com,https://www.highvibescreation.com
+      (fără asta, docker compose refuză pornirea — mesaj de eroare la variabilă lipsă)
 
-6) În Cloudflare DNS: A sau CNAME pentru subdomeniul API (ex. mail-api) către IP-ul
-   unde rulează Coolify (sau reverse proxy-ul tău).
+   De obicei la fel ca în template:
+      SMTP_HOST=host.docker.internal
+      SMTP_PORT=587
+      SMTP_USER / SMTP_PASS — doar dacă Postfix cere auth
 
-7) În index.html: MAIL_API_BASE = URL-ul public HTTPS al API (fără slash final).
+   Generează parolă aleatoare (opțional, pentru SMTP sau note proprii):
+      node scripts/gen-coolify-secrets.js
+      Copiază output-ul în Coolify; NU în git.
 
-Notă: la fiecare push pe branch, poți activa auto-deploy în Coolify ca „redeploy”
-să fie practic un singur click sau automat la commit.
+   Notă: Coolify afișează variabilele folosite în compose (${...}). Poți adăuga
+   manual orice cheie din coolify-env.template dacă nu apare — același efect.
+
+5) Deploy / Redeploy → build mail-api/Dockerfile, healthcheck GET /health.
+
+6) Cloudflare: A/CNAME pentru subdomeniul API (ex. mail-api).
+
+7) index.html: MAIL_API_BASE = URL public HTTPS al API (fără / final).
+
+Auto-deploy: activează în Coolify deploy la push pe branch dacă vrei.

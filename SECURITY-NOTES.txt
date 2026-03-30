@@ -18,3 +18,6 @@ Ce e OK în repo
 
 Dacă ai comitat din greșeală un secret: rotire parolă/cheie + git history cleanup
 (sau contactează cine administrează repo-ul).
+
+scripts/gen-coolify-secrets.js afișează valori aleatoare — copiază-le doar în Coolify,
+nu în fișiere urmărite de git.

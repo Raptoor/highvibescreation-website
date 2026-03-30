@@ -1,7 +1,10 @@
-# Deploy în Coolify: resursă nouă → Docker Compose → repo + branch → cale compose.yaml
-# Setează variabilele în Coolify (Shared Variables) sau fișier .env lângă compose.
+# Deploy Coolify: New Resource → Docker Compose → repo → compose.yaml
 #
-# Postfix/SMTP pe același VPS: folosește SMTP_HOST=host.docker.internal (vezi extra_hosts mai jos).
+# Variabile: vezi coolify-env.template (listă completă + comentarii).
+# Generează SMTP_PASS aleator:  node scripts/gen-coolify-secrets.js
+#
+# ALLOWED_ORIGINS e obligatoriu — fără el, compose refuză deploy-ul (mesaj clar).
+# Postfix pe același VPS: SMTP_HOST=host.docker.internal (extra_hosts mai jos).
 
 services:
   mail-api:
@@ -16,7 +19,8 @@ services:
     environment:
       NODE_ENV: production
       PORT: "3000"
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+      # Coolify: setează în UI sau .env — fără această variabilă deploy-ul eșuează la parse
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?ALLOWED_ORIGINS_missing_set_in_Coolify_see_coolify-env.template}
       SMTP_HOST: ${SMTP_HOST:-host.docker.internal}
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_SECURE: ${SMTP_SECURE:-false}

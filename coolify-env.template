@@ -1,0 +1,31 @@
+# =============================================================================
+# COOLIFY — Environment Variables (Development / Production)
+# Copiază fiecare pereche KEY=value în Coolify → Service → Environment Variables
+# Sau: Bulk / Import dacă interfața ta permite fișier .env
+#
+# Generează parole aleatoare (opțional):  node scripts/gen-coolify-secrets.js
+# =============================================================================
+
+# Obligatoriu — domeniile de pe care site-ul face request la API (CORS)
+ALLOWED_ORIGINS=https://highvibescreation.com,https://www.highvibescreation.com
+
+# SMTP — Postfix pe același VPS ca Docker (recomandat cu compose-ul nostru)
+SMTP_HOST=host.docker.internal
+SMTP_PORT=587
+SMTP_SECURE=false
+
+# Completează DOAR dacă Postfix cere autentificare SMTP (sau alt relay)
+SMTP_USER=
+SMTP_PASS=
+
+# Adrese în mesaje
+MAIL_FROM=website@highvibescreation.com
+MAIL_TO=office@highvibescreation.com
+
+# Limită trimiteri (opțional)
+RATE_LIMIT_WINDOW_MS=60000
+RATE_LIMIT_CONTACT_MAX=1
+RATE_LIMIT_NEWSLETTER_MAX=1
+
+# Port mapare host (opțional)
+MAIL_API_PORT=3000
