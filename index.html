@@ -141,6 +141,7 @@
     .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
     .hamburger span { display: block; width: 22px; height: 1px; background: var(--black); transition: 0.3s; }
     .mob-book-btn { display: none; }
+    .mob-right { display: none; }
 
     .mobile-menu {
       display: none;
@@ -815,33 +816,35 @@
     @media (max-width: 768px) {
       .nav-left, .nav-right { display: none; }
       .hamburger { display: flex; }
+      .mob-right { display: flex; }
 
-      /* Header: hamburger stanga, logo centrat */
+      /* Header: logo stanga, butoane dreapta */
       .header-inner {
         display: flex;
-        position: relative;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         padding: 0 20px;
         height: 64px;
       }
-      .nav-logo { text-align: center; }
-      .nav-logo img { height: 44px; }
+      .nav-logo { text-align: left; }
+      .nav-logo img { height: 40px; }
       .hamburger {
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 10px;
-        margin: -10px;
+        position: static;
+        transform: none;
+        padding: 8px;
+        margin: 0;
+        order: 3;
       }
       .lang-bar { display: none; }
+      .mob-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
       .mob-book-btn {
         display: block;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+        position: static;
+        transform: none;
         font-family: var(--sans);
         font-size: 9px;
         letter-spacing: 2px;
@@ -850,6 +853,12 @@
         color: var(--white);
         background: var(--magenta);
         padding: 8px 14px;
+      }
+      .hamburger {
+        position: static !important;
+        transform: none !important;
+        padding: 8px !important;
+        margin: 0 !important;
       }
 
       /* Grids */
@@ -923,10 +932,12 @@
         <li><a href="#contact" data-en="Contact" data-ro="Contact">Contact</a></li>
         <li><a href="#contact" class="nav-book" data-en="Book a Session" data-ro="Programează">Book a Session</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
+      <div class="mob-right">
+        <a href="#contact" class="mob-book-btn" data-en="Book" data-ro="Programează">Book</a>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
       </div>
-      <a href="#contact" class="mob-book-btn" data-en="Book" data-ro="Programează">Book</a>
     </div>
   </header>
 
