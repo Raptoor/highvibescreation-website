@@ -118,7 +118,7 @@
       flex-shrink: 0;
       text-align: left;
     }
-    .nav-logo img { height: 56px; width: auto; display: inline-block; }
+    .nav-logo img { height: 64px; width: auto; display: inline-block; }
 
     /* Logo stânga, tot meniul grupat în dreapta (similar lorenavlasin.com) */
     .nav-desktop {
@@ -208,8 +208,9 @@
 
     /* ─── HERO ─── */
     #home {
-      height: 100vh;
-      min-height: 640px;
+      height: 72vh;
+      min-height: 480px;
+      max-height: 800px;
       position: relative;
       display: flex;
       align-items: center;
@@ -408,25 +409,7 @@
     /* ─── ABOUT ─── */
     #about { background: var(--white); }
     .about-grid {
-      display: grid;
-      grid-template-columns: 5fr 6fr;
-      gap: 96px;
-      align-items: center;
-    }
-    .about-img-col { position: relative; }
-    .about-img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .about-img-accent {
-      position: absolute;
-      bottom: -20px; right: -20px;
-      width: 100px; height: 100px;
-      border: 1px solid var(--magenta-pale);
-      pointer-events: none;
+      max-width: 680px;
     }
     .about-text-col .body-text { margin-bottom: 18px; }
     .about-list {
@@ -858,13 +841,16 @@
       .header-inner { padding: 0 28px; }
       .nav-list { gap: 16px; }
       .nav-list a { font-size: 10px; letter-spacing: 2px; }
-      .about-grid { grid-template-columns: 1fr; gap: 56px; }
-      .about-img { max-width: 480px; }
       .contact-grid { grid-template-columns: 1fr; gap: 56px; }
       .services-grid, .testi-grid, .shop-grid { grid-template-columns: 1fr 1fr; }
       .wrap { padding: 0 28px; }
     }
     @media (max-width: 768px) {
+      #home {
+        height: 62vh;
+        min-height: 360px;
+        max-height: 560px;
+      }
       .nav-desktop { display: none; }
       .hamburger { display: flex; }
       .mob-right { display: flex; }
@@ -878,7 +864,7 @@
         height: 64px;
       }
       .nav-logo { text-align: left; }
-      .nav-logo img { height: 40px; }
+      .nav-logo img { height: 46px; }
       .hamburger {
         position: static;
         transform: none;
@@ -938,9 +924,6 @@
       .form-row { grid-template-columns: 1fr; }
       .nl-form { flex-direction: column; }
       .nl-btn { padding: 16px; }
-
-      /* Decorative accent hides on mobile */
-      .about-img-accent { display: none; }
 
       /* Footer */
       footer { padding: 40px 20px; }
@@ -1049,11 +1032,7 @@
   <section id="about">
     <div class="wrap section-pad">
       <div class="about-grid">
-        <div class="about-img-col reveal">
-          <img class="about-img" src="assets/images/about.jpg" alt="High Vibes Creation" />
-          <div class="about-img-accent"></div>
-        </div>
-        <div class="about-text-col reveal reveal-delay-1">
+        <div class="about-text-col reveal">
           <span class="eyebrow" data-en="Our Story" data-ro="Despre Mine">Our Story</span>
           <h2 class="serif-title" data-en="Your point of view<br>creates your <em>reality</em>" data-ro="Punctul tău de vedere<br>îți creează <em>realitatea</em>">Your point of view<br>creates your <em>reality</em></h2>
           <p class="body-text" data-en="Welcome to High Vibes Creation — a space of energetic transformation, mental clarity and infinite possibilities." data-ro="Bun venit în lumea High Vibes Creation — un spațiu de transformare energetică, claritate mentală și posibilități infinite.">Welcome to High Vibes Creation — a space of energetic transformation, mental clarity and infinite possibilities.</p>
