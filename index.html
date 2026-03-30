@@ -140,6 +140,7 @@
 
     .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
     .hamburger span { display: block; width: 22px; height: 1px; background: var(--black); transition: 0.3s; }
+    .mob-book-btn { display: none; }
 
     .mobile-menu {
       display: none;
@@ -164,6 +165,7 @@
     }
     .mobile-menu a:hover { color: var(--magenta); }
     .mob-close { position: absolute; top: 28px; right: 40px; font-size: 24px; cursor: pointer; color: var(--black); line-height:1; background:none; border:none; }
+    .mob-lang { display: flex; gap: 8px; align-items: center; margin-top: 16px; }
 
     /* ─── HERO ─── */
     #home {
@@ -814,7 +816,7 @@
       .nav-left, .nav-right { display: none; }
       .hamburger { display: flex; }
 
-      /* Header: logo centrat, hamburger dreapta, lang-bar stanga */
+      /* Header: hamburger stanga, logo centrat */
       .header-inner {
         display: flex;
         position: relative;
@@ -827,19 +829,27 @@
       .nav-logo img { height: 44px; }
       .hamburger {
         position: absolute;
-        right: 20px;
+        left: 20px;
         top: 50%;
         transform: translateY(-50%);
         padding: 10px;
         margin: -10px;
       }
-      .lang-bar {
-        position: fixed;
-        top: auto;
-        bottom: auto;
-        top: 18px;
-        right: auto;
-        left: 16px;
+      .lang-bar { display: none; }
+      .mob-book-btn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--sans);
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--white);
+        background: var(--magenta);
+        padding: 8px 14px;
       }
 
       /* Grids */
@@ -916,6 +926,7 @@
       <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
       </div>
+      <a href="#contact" class="mob-book-btn" data-en="Book" data-ro="Programează">Book</a>
     </div>
   </header>
 
@@ -928,6 +939,11 @@
     <a href="#shop" class="mob-link" data-en="Shop" data-ro="Shop">Shop</a>
     <a href="#contact" class="mob-link" data-en="Contact" data-ro="Contact">Contact</a>
     <a href="#contact" class="mob-link" data-en="Book a Session" data-ro="Programează">Book a Session</a>
+    <div class="mob-lang">
+      <button class="lang-btn active" onclick="setLang('en')" id="mob-btn-en">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" onclick="setLang('ro')" id="mob-btn-ro">RO</button>
+    </div>
   </div>
 
   <!-- ─── HERO ─── -->
