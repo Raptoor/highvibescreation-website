@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Vibes Creation</title>
+  <meta name="description" content="High Vibes Creation — Access Bars®, MTVSS and energy healing sessions. Empowering people to live the life they love." />
+  <link rel="icon" type="image/png" href="assets/images/logo-color.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    @font-face { font-family:'Futura'; src:url('assets/fonts/Futura-Light.ttf') format('truetype'); font-weight:300; }
+    @font-face { font-family:'Futura'; src:url('assets/fonts/Futura-Book.ttf') format('truetype'); font-weight:400; }
+    @font-face { font-family:'Futura'; src:url('assets/fonts/Futura-Medium.ttf') format('truetype'); font-weight:500; }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+    :root {
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Futura', 'Jost', 'Century Gothic', sans-serif;
+      --magenta: #c0359a;
+      --magenta-pale: #f5e6f1;
+      --black: #0e0e0e;
+      --dark: #1a1a1a;
+      --gray: #666;
+      --light: #f9f8f7;
+      --border: #e5e5e5;
+      --white: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    ::selection { background: var(--magenta-pale); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--magenta-pale); }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-bar {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 300;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .lang-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gray);
+      padding: 4px 6px;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .lang-btn.active { color: var(--magenta); border-bottom: 1px solid var(--magenta); }
+    .lang-btn:hover { color: var(--magenta); }
+    .lang-sep { font-size: 10px; color: var(--border); }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      transition: background 0.5s, box-shadow 0.5s;
+    }
+    header.scrolled {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .header-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 90px;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-right { justify-content: flex-end; align-items: center; }
+
+    .nav-left a, .nav-right a {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-decoration: none;
+      color: var(--black);
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-left a::after, .nav-right a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -3px;
+      width: 0; height: 1px;
+      background: var(--magenta);
+      transition: width 0.3s;
+    }
+    .nav-left a:hover, .nav-right a:hover { color: var(--magenta); }
+    .nav-left a:hover::after, .nav-right a:hover::after { width: 100%; }
+
+    .nav-logo { text-align: center; }
+    .nav-logo img { height: 56px; width: auto; display: inline-block; }
+
+    .nav-book {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white) !important;
+      background: var(--magenta);
+      padding: 9px 22px;
+      transition: background 0.25s !important;
+    }
+    .nav-book:hover { background: var(--black) !important; }
+    .nav-book::after { display: none !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--black); transition: 0.3s; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 250;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--magenta); }
+    .mob-close { position: absolute; top: 28px; right: 40px; font-size: 24px; cursor: pointer; color: var(--black); line-height:1; background:none; border:none; }
+
+    /* ─── HERO ─── */
+    #home {
+      height: 100vh;
+      min-height: 640px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #111;
+    }
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/hero.jpg') center 20%/cover no-repeat;
+      opacity: 0.72;
+      transition: transform 6s ease;
+    }
+    #home:hover .hero-photo { transform: scale(1.03); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.42) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 1.2s 0.4s forwards;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(52px, 8vw, 104px);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.0;
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1.2s 0.7s forwards;
+    }
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: clamp(11px, 1.5vw, 13px);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1.2s 1.0s forwards;
+    }
+    .hero-cta-wrap {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 1.2s 1.3s forwards;
+    }
+    .btn-hero-primary {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--magenta);
+      padding: 14px 36px;
+      transition: background 0.3s;
+    }
+    .btn-hero-primary:hover { background: var(--black); }
+    .btn-hero-ghost {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      padding-bottom: 3px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-hero-ghost:hover { color: #f5c8ea; border-color: #f5c8ea; }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 2s forwards;
+    }
+    .scroll-cue span {
+      font-family: var(--sans);
+      font-size: 8px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .scroll-cue-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.45), transparent);
+      animation: scrollPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ─── MARQUEE ─── */
+    .marquee-strip {
+      background: var(--black);
+      padding: 16px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-track span {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      padding: 0 36px;
+      white-space: nowrap;
+    }
+    .marquee-track em { color: var(--magenta); font-style: normal; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ─── SHARED LAYOUT ─── */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+    .section-pad { padding: 120px 0; }
+    .section-pad-sm { padding: 80px 0; }
+
+    .reveal { opacity:0; transform:translateY(36px); transition:opacity 1s ease, transform 1s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .serif-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+    .serif-title em { font-style: italic; color: var(--magenta); }
+    .body-text {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--gray);
+      font-weight: 300;
+    }
+    .link-underline {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      transition: color 0.25s, border-color 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .link-underline::after { content: '→'; font-size: 14px; font-family: serif; }
+    .link-underline:hover { color: var(--magenta); border-color: var(--magenta); }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 96px;
+      align-items: center;
+    }
+    .about-img-col { position: relative; }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 100px; height: 100px;
+      border: 1px solid var(--magenta-pale);
+      pointer-events: none;
+    }
+    .about-text-col .body-text { margin-bottom: 18px; }
+    .about-list {
+      list-style: none;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .about-list li {
+      display: flex;
+      gap: 14px;
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .about-list li::before { content: '—'; color: var(--magenta); flex-shrink: 0; }
+    .stats-row {
+      display: flex;
+      gap: 48px;
+      margin-top: 44px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--magenta);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-lbl {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--light); }
+    .services-top { text-align: center; margin-bottom: 72px; }
+    .services-top .body-text { max-width: 520px; margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .svc-card {
+      background: var(--white);
+      padding: 52px 40px;
+      transition: background 0.35s, color 0.35s;
+      cursor: default;
+    }
+    .svc-card:hover { background: var(--black); }
+    .svc-card:hover .svc-num,
+    .svc-card:hover .svc-name,
+    .svc-card:hover .svc-desc,
+    .svc-card:hover .svc-tag { color: rgba(255,255,255,0.85); }
+    .svc-card:hover .svc-num { color: var(--magenta); }
+    .svc-card:hover .svc-divider { background: var(--magenta); }
+    .svc-num {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--magenta);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      display: block;
+      font-style: italic;
+      transition: color 0.35s;
+    }
+    .svc-divider { width: 28px; height: 1px; background: var(--border); margin-bottom: 24px; transition: background 0.35s; }
+    .svc-name {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+      transition: color 0.35s;
+      line-height: 1.2;
+    }
+    .svc-desc {
+      font-family: var(--sans);
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--gray);
+      font-weight: 300;
+      transition: color 0.35s;
+    }
+    .svc-tag {
+      display: inline-block;
+      margin-top: 22px;
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--magenta);
+      transition: color 0.35s;
+    }
+
+    /* ─── QUOTE SECTION ─── */
+    #quote {
+      background: var(--white);
+      padding: 110px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 80px;
+      color: var(--magenta-pale);
+      line-height: 0.6;
+      display: block;
+      margin-bottom: 28px;
+    }
+    .quote-body {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.8vw, 48px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--black);
+      line-height: 1.4;
+      max-width: 820px;
+      margin: 0 auto 32px;
+    }
+    .quote-body em { color: var(--magenta); font-style: normal; }
+    .quote-source {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--light); }
+    .testi-top { text-align: center; margin-bottom: 72px; }
+    .testi-top .body-text { max-width: 480px; margin: 0 auto; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; }
+    .testi-card { }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 22px; }
+    .star { color: var(--magenta); font-size: 13px; }
+    .testi-text {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--dark);
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+    .testi-rule { width: 28px; height: 1px; background: var(--magenta-pale); margin-bottom: 18px; }
+    .testi-name {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 400;
+    }
+    .testi-loc { font-family: var(--sans); font-size: 12px; color: var(--gray); margin-top: 3px; }
+
+    /* ─── EVENTS ─── */
+    #events { background: var(--white); }
+    .events-top { text-align: center; margin-bottom: 72px; }
+    .events-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+    .event-row {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      align-items: center;
+      gap: 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .event-row:hover { background: var(--light); }
+    .event-row:hover { padding-left: 16px; padding-right: 16px; margin: 0 -16px; }
+    .event-date-col {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--magenta);
+    }
+    .event-title-col { }
+    .event-title-col h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .event-title-col p {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--gray);
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    .event-arrow {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.25s, border-color 0.25s;
+      white-space: nowrap;
+    }
+    .event-arrow:hover { color: var(--magenta); border-color: var(--magenta); }
+    .events-cta { text-align: center; margin-top: 52px; }
+
+    /* ─── SHOP ─── */
+    #shop { background: var(--light); }
+    .shop-top { text-align: center; margin-bottom: 72px; }
+    .shop-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px; }
+    .shop-card { cursor: default; }
+    .shop-img-box {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--white);
+      margin-bottom: 22px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .shop-img-box-inner {
+      width: 100%; height: 100%;
+      background: linear-gradient(145deg, #f5e6f1 0%, #e8d4e4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.6s ease;
+    }
+    .shop-card:hover .shop-img-box-inner { transform: scale(1.04); }
+    .shop-img-box-inner img { width: 45%; opacity: 0.35; }
+    .shop-cat {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 6px;
+    }
+    .shop-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .shop-price {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--gray);
+      font-weight: 300;
+    }
+    .shop-cta { text-align: center; margin-top: 52px; }
+
+    /* ─── NEWSLETTER ─── */
+    #newsletter {
+      background: var(--black);
+      padding: 100px 0;
+      text-align: center;
+    }
+    .nl-label { font-family: var(--sans); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--magenta); margin-bottom: 20px; display: block; }
+    .nl-title {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .nl-sub {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 44px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    .nl-form { display: flex; max-width: 460px; margin: 0 auto; }
+    .nl-input {
+      flex: 1;
+      padding: 14px 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      outline: none;
+      letter-spacing: 1px;
+    }
+    .nl-input::placeholder { color: rgba(255,255,255,0.3); }
+    .nl-input:focus { border-color: var(--magenta); }
+    .nl-btn {
+      padding: 14px 28px;
+      background: var(--magenta);
+      color: var(--white);
+      border: none;
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+      white-space: nowrap;
+    }
+    .nl-btn:hover { background: var(--white); color: var(--black); }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .contact-info-col .body-text { margin-bottom: 44px; }
+    .contact-items { display: flex; flex-direction: column; gap: 22px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+    .c-icon { font-size: 14px; color: var(--magenta); flex-shrink: 0; margin-top: 2px; }
+    .c-lbl { font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 3px; }
+    .c-val a { font-family: var(--sans); font-size: 14px; color: var(--black); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+    .c-val a:hover { color: var(--magenta); }
+    .social-row { display: flex; gap: 24px; margin-top: 44px; }
+    .social-link {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .social-link:hover { color: var(--magenta); border-color: var(--magenta); }
+
+    /* form */
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.3s;
+      appearance: none;
+      border-radius: 0;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--magenta); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #bbb; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .btn-submit {
+      margin-top: 8px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 15px 44px;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background: var(--magenta); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--light);
+      border-top: 1px solid var(--border);
+      padding: 52px 48px 36px;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo img { height: 36px; }
+    .footer-copy { font-family: var(--sans); font-size: 11px; color: #aaa; letter-spacing: 0.5px; }
+    .footer-copy a { color: var(--magenta); text-decoration: none; }
+    .footer-tagline { font-family: var(--serif); font-size: 14px; color: #aaa; font-style: italic; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .header-inner { padding: 0 28px; }
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .about-img { max-width: 480px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+      .services-grid, .testi-grid, .shop-grid { grid-template-columns: 1fr 1fr; }
+      .wrap { padding: 0 28px; }
+    }
+    @media (max-width: 768px) {
+      .nav-left, .nav-right { display: none; }
+      .hamburger { display: flex; }
+      .nav-logo { grid-column: 1; }
+      .header-inner { grid-template-columns: auto 1fr auto; }
+      .services-grid, .testi-grid, .shop-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+      .section-pad { padding: 80px 0; }
+      footer { padding: 40px 28px; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .event-row { grid-template-columns: 1fr; gap: 12px; }
+      .form-row { grid-template-columns: 1fr; }
+      .nl-form { flex-direction: column; }
+      .stats-row { gap: 32px; }
+      .lang-bar { top: 12px; right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── LANGUAGE SWITCHER ─── -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" onclick="setLang('ro')" id="btn-ro">RO</button>
+  </div>
+
+  <!-- ─── HEADER ─── -->
+  <header id="site-header">
+    <div class="header-inner">
+      <ul class="nav-left">
+        <li><a href="#about" data-en="Our Story" data-ro="Despre Mine">Our Story</a></li>
+        <li><a href="#services" data-en="Services" data-ro="Servicii">Services</a></li>
+        <li><a href="#events" data-en="Events" data-ro="Evenimente">Events</a></li>
+      </ul>
+      <div class="nav-logo">
+        <a href="#home"><img src="assets/images/logo-color.png" alt="High Vibes Creation" /></a>
+      </div>
+      <ul class="nav-right">
+        <li><a href="#shop" data-en="Shop" data-ro="Shop">Shop</a></li>
+        <li><a href="#contact" data-en="Contact" data-ro="Contact">Contact</a></li>
+        <li><a href="#contact" class="nav-book" data-en="Book a Session" data-ro="Programează">Book a Session</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mob-close" id="mobClose">✕</button>
+    <a href="#about" class="mob-link" data-en="Our Story" data-ro="Despre Mine">Our Story</a>
+    <a href="#services" class="mob-link" data-en="Services" data-ro="Servicii">Services</a>
+    <a href="#events" class="mob-link" data-en="Events" data-ro="Evenimente">Events</a>
+    <a href="#shop" class="mob-link" data-en="Shop" data-ro="Shop">Shop</a>
+    <a href="#contact" class="mob-link" data-en="Contact" data-ro="Contact">Contact</a>
+    <a href="#contact" class="mob-link" data-en="Book a Session" data-ro="Programează">Book a Session</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="home">
+    <div class="hero-photo"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-en="Access Bars® · Energy Healing · Transformation" data-ro="Access Bars® · Vindecare Energetică · Transformare">Access Bars® · Energy Healing · Transformation</p>
+      <h1 class="hero-title" data-en="A different<br>possibility" data-ro="O altă<br>posibilitate">A different<br>possibility</h1>
+      <p class="hero-sub" data-en="Infinite Possibilities are the new sexy!" data-ro="Posibilitățile infinite sunt noul sexy!">Infinite Possibilities are the new sexy!</p>
+      <div class="hero-cta-wrap">
+        <a href="#contact" class="btn-hero-primary" data-en="Book a Session" data-ro="Programează o Sesiune">Book a Session</a>
+        <a href="#about" class="btn-hero-ghost" data-en="Discover more" data-ro="Descoperă mai mult">Discover more</a>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <span data-en="Scroll" data-ro="Scroll">Scroll</span>
+      <div class="scroll-cue-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE ─── -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Access Bars®</span><span><em>·</em></span>
+      <span>MTVSS</span><span><em>·</em></span>
+      <span>Energy Healing</span><span><em>·</em></span>
+      <span>Infinite Possibilities</span><span><em>·</em></span>
+      <span>High Vibes Creation</span><span><em>·</em></span>
+      <span>Ease Joy &amp; Glory</span><span><em>·</em></span>
+      <span>Access Bars®</span><span><em>·</em></span>
+      <span>MTVSS</span><span><em>·</em></span>
+      <span>Energy Healing</span><span><em>·</em></span>
+      <span>Infinite Possibilities</span><span><em>·</em></span>
+      <span>High Vibes Creation</span><span><em>·</em></span>
+      <span>Ease Joy &amp; Glory</span><span><em>·</em></span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="wrap section-pad">
+      <div class="about-grid">
+        <div class="about-img-col reveal">
+          <img class="about-img" src="assets/images/about.jpg" alt="High Vibes Creation" />
+          <div class="about-img-accent"></div>
+        </div>
+        <div class="about-text-col reveal reveal-delay-1">
+          <span class="eyebrow" data-en="Our Story" data-ro="Despre Mine">Our Story</span>
+          <h2 class="serif-title" data-en="Your point of view<br>creates your <em>reality</em>" data-ro="Punctul tău de vedere<br>îți creează <em>realitatea</em>">Your point of view<br>creates your <em>reality</em></h2>
+          <p class="body-text" data-en="Welcome to High Vibes Creation — a space of energetic transformation, mental clarity and infinite possibilities." data-ro="Bun venit în lumea High Vibes Creation — un spațiu de transformare energetică, claritate mentală și posibilități infinite.">Welcome to High Vibes Creation — a space of energetic transformation, mental clarity and infinite possibilities.</p>
+          <p class="body-text" style="margin-top:14px" data-en="I am a certified Access Bars® practitioner and energetic transformation facilitator. My mission is to support you in releasing mental and energetic limitations — opening the door to a life of greater ease, joy and glory." data-ro="Sunt practicant certificat Access Bars® și facilitator de transformare energetică. Misiunea mea este să te sprijin în eliberarea limitărilor mentale și energetice — deschizând ușa spre o viață cu mai multă ușurință, bucurie și glorie.">I am a certified Access Bars® practitioner and energetic transformation facilitator. My mission is to support you in releasing mental and energetic limitations — opening the door to a life of greater ease, joy and glory.</p>
+          <ul class="about-list">
+            <li data-en="Certified Access Bars® practitioner" data-ro="Practicant certificat Access Bars®">Certified Access Bars® practitioner</li>
+            <li data-en="MTVSS and body process facilitator" data-ro="Facilitator MTVSS și procese corporale">MTVSS and body process facilitator</li>
+            <li data-en="Individual and group sessions" data-ro="Sesiuni individuale și de grup">Individual and group sessions</li>
+            <li data-en="Available online — worldwide" data-ro="Disponibil online — oriunde în lume">Available online — worldwide</li>
+          </ul>
+          <a href="#contact" class="link-underline" data-en="Book a session" data-ro="Programează o sesiune">Book a session</a>
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="stat-num">500+</div>
+              <div class="stat-lbl" data-en="Sessions" data-ro="Sesiuni">Sessions</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">60+</div>
+              <div class="stat-lbl" data-en="Processes" data-ro="Procese">Processes</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">∞</div>
+              <div class="stat-lbl" data-en="Possibilities" data-ro="Posibilități">Possibilities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div class="wrap section-pad">
+      <div class="services-top reveal">
+        <span class="eyebrow" data-en="What I Offer" data-ro="Ce Ofer">What I Offer</span>
+        <h2 class="serif-title" data-en="Services &amp; <em>Processes</em>" data-ro="Servicii &amp; <em>Procese</em>">Services &amp; <em>Processes</em></h2>
+        <p class="body-text" data-en="Each session is a safe, judgment-free space where you can explore and release what no longer serves your evolution." data-ro="Fiecare sesiune este un spațiu sigur, fără judecată, în care poți explora și elibera ceea ce nu mai servește evoluției tale.">Each session is a safe, judgment-free space where you can explore and release what no longer serves your evolution.</p>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card reveal">
+          <span class="svc-num">01</span>
+          <div class="svc-divider"></div>
+          <h3 class="svc-name">Access Bars®</h3>
+          <p class="svc-desc" data-en="A gentle energetic method involving the light touch of 32 points on the head, releasing limiting thoughts, emotions and beliefs stored in your energetic field." data-ro="O metodă blândă de lucru energetic — atingerea ușoară a 32 de puncte de pe cap, eliberând gânduri, emoții și credințe limitative.">A gentle energetic method involving the light touch of 32 points on the head, releasing limiting thoughts, emotions and beliefs stored in your energetic field.</p>
+          <span class="svc-tag" data-en="Most Popular" data-ro="Cel mai popular">Most Popular</span>
+        </div>
+        <div class="svc-card reveal reveal-delay-1">
+          <span class="svc-num">02</span>
+          <div class="svc-divider"></div>
+          <h3 class="svc-name">MTVSS</h3>
+          <p class="svc-desc" data-en="Molecular Terminal Valence Sloughing System — a powerful energetic process working with the physical body, supporting the immune system and molecular structures." data-ro="Molecular Terminal Valence Sloughing System — un proces energetic puternic de lucru cu corpul fizic, susținând sistemul imunitar și structurile moleculare.">Molecular Terminal Valence Sloughing System — a powerful energetic process working with the physical body, supporting the immune system and molecular structures.</p>
+          <span class="svc-tag" data-en="Body Process" data-ro="Proces Corporal">Body Process</span>
+        </div>
+        <div class="svc-card reveal reveal-delay-2">
+          <span class="svc-num">03</span>
+          <div class="svc-divider"></div>
+          <h3 class="svc-name" data-en="Body Processes" data-ro="Procese Corporale">Body Processes</h3>
+          <p class="svc-desc" data-en="Over 60 Access Consciousness® body processes available — each addressing specific aspects of body, mind and emotions for complete transformation." data-ro="Peste 60 de procese Access Consciousness® — fiecare adresând aspecte specifice ale corpului, minții și emoțiilor pentru o transformare completă.">Over 60 Access Consciousness® body processes available — each addressing specific aspects of body, mind and emotions for complete transformation.</p>
+          <span class="svc-tag" data-en="60+ Processes" data-ro="60+ Procese">60+ Processes</span>
+        </div>
+        <div class="svc-card reveal">
+          <span class="svc-num">04</span>
+          <div class="svc-divider"></div>
+          <h3 class="svc-name" data-en="Biometric Mining" data-ro="Minare Biometrică">Biometric Mining</h3>
+          <p class="svc-desc" data-en="An energetic process working with behaviors, emotions and thinking patterns stored in the body's cells — creating clarity and ease in your actions." data-ro="Un proces energetic care lucrează cu comportamentele și modelele de gândire stocate în celulele corpului — creând claritate și ușurință în acțiunea ta.">An energetic process working with behaviors, emotions and thinking patterns stored in the body's cells — creating clarity and ease in your actions.</p>
+          <span class="svc-tag" data-en="Transformation" data-ro="Transformare">Transformation</span>
+        </div>
+        <div class="svc-card reveal reveal-delay-1">
+          <span class="svc-num">05</span>
+          <div class="svc-divider"></div>
+          <h3 class="svc-name" data-en="Cognitive Dissonance" data-ro="Disonanță Cognitivă">Cognitive Dissonance</h3>
+          <p class="svc-desc" data-en="Releasing conflicting thought patterns that generate confusion or self-sabotage — opening space for fluid, expansive thinking and greater clarity." data-ro="Eliberarea tiparelor de gândire conflictuale care generează confuzie sau auto-sabotaj — deschizând spațiu pentru gândire fluentă și claritate.">Releasing conflicting thought patterns that generate confusion or self-sabotage — opening space for fluid, expansive thinking and greater clarity.</p>
+          <span class="svc-tag" data-en="Mental Clarity" data-ro="Claritate Mentală">Mental Clarity</span>
+        </div>
+        <div class="svc-card reveal reveal-delay-2">
+          <span class="svc-num">06</span>
+          <div class="svc-divider"></div>
+          <h3 class="svc-name" data-en="Online Sessions" data-ro="Sesiuni Online">Online Sessions</h3>
+          <p class="svc-desc" data-en="All processes are available online — just as effective as in person. Book a session from the comfort of your home, anywhere in the world." data-ro="Toate procesele sunt disponibile online — la fel de eficiente ca în persoană. Din confortul casei tale, oriunde în lume.">All processes are available online — just as effective as in person. Book a session from the comfort of your home, anywhere in the world.</p>
+          <span class="svc-tag" data-en="Worldwide" data-ro="Worldwide">Worldwide</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── QUOTE ─── -->
+  <section id="quote">
+    <div class="wrap">
+      <span class="quote-mark reveal">"</span>
+      <blockquote class="quote-body reveal reveal-delay-1" data-en="Infinite Possibilities are the <em>new sexy!</em>" data-ro="Posibilitățile infinite sunt <em>noul sexy!</em>">
+        Infinite Possibilities are the <em>new sexy!</em>
+      </blockquote>
+      <p class="quote-source reveal reveal-delay-2">— High Vibes Creation</p>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section id="testimonials">
+    <div class="wrap section-pad">
+      <div class="testi-top reveal">
+        <span class="eyebrow" data-en="Client Stories" data-ro="Poveștile Clienților">Client Stories</span>
+        <h2 class="serif-title" data-en="What clients <em>say</em>" data-ro="Ce spun <em>clienții</em>">What clients <em>say</em></h2>
+        <p class="body-text" data-en="Real transformations, from the hearts of people who chose to change something in their life." data-ro="Transformări reale, din inimile oamenilor care au ales să schimbe ceva în viața lor.">Real transformations, from the hearts of people who chose to change something in their life.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text" data-en="&ldquo;After my first Access Bars® session, I felt an ease I hadn&rsquo;t experienced in years. My mind completely quieted and I was able to sleep without worry for the first time.&rdquo;" data-ro="&ldquo;După prima sesiune de Access Bars®, am simțit o ușurință pe care nu o mai experimentasem de ani de zile. Mintea mea s-a liniștit complet și am putut să dorm fără griji.&rdquo;">&ldquo;After my first Access Bars® session, I felt an ease I hadn&rsquo;t experienced in years. My mind completely quieted and I was able to sleep without worry for the first time.&rdquo;</p>
+          <div class="testi-rule"></div>
+          <div class="testi-name">Maria D.</div>
+          <div class="testi-loc">Bucharest</div>
+        </div>
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text" data-en="&ldquo;An extraordinary ability to create a safe, judgment-free space. The MTVSS sessions helped me overcome chronic pain I had struggled with for years. Highly recommended!&rdquo;" data-ro="&ldquo;Un talent extraordinar de a crea un spațiu sigur și fără judecată. Sesiunile MTVSS m-au ajutat să depășesc dureri cronice cu care mă luptasem ani de zile. Recomandat cu toată inima!&rdquo;">&ldquo;An extraordinary ability to create a safe, judgment-free space. The MTVSS sessions helped me overcome chronic pain I had struggled with for years. Highly recommended!&rdquo;</p>
+          <div class="testi-rule"></div>
+          <div class="testi-name">Andrei P.</div>
+          <div class="testi-loc">Cluj-Napoca</div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text" data-en="&ldquo;I left with a clarity and energy I hadn&rsquo;t felt in a long time. Infinite Possibilities — they really are real!&rdquo;" data-ro="&ldquo;Am plecat cu o claritate și o energie pe care nu le mai simțisem de mult. Posibilitățile infinite — chiar sunt reale!&rdquo;">&ldquo;I left with a clarity and energy I hadn&rsquo;t felt in a long time. Infinite Possibilities — they really are real!&rdquo;</p>
+          <div class="testi-rule"></div>
+          <div class="testi-name">Cristina L.</div>
+          <div class="testi-loc">Timișoara</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EVENTS ─── -->
+  <section id="events">
+    <div class="wrap section-pad">
+      <div class="events-top reveal">
+        <span class="eyebrow" data-en="Events" data-ro="Evenimente">Events</span>
+        <h2 class="serif-title" data-en="Upcoming <em>Events</em>" data-ro="Evenimente <em>Viitoare</em>">Upcoming <em>Events</em></h2>
+        <p class="body-text" data-en="Join workshops, group sessions and energetic transformation events." data-ro="Participă la workshopuri, sesiuni de grup și evenimente de transformare energetică.">Join workshops, group sessions and energetic transformation events.</p>
+      </div>
+      <div class="events-list">
+        <div class="event-row reveal">
+          <div class="event-date-col" data-en="April 2026" data-ro="Aprilie 2026">April 2026</div>
+          <div class="event-title-col">
+            <h3 data-en="Access Bars® Workshop — Introduction" data-ro="Workshop Access Bars® — Introducere">Access Bars® Workshop — Introduction</h3>
+            <p data-en="Bucharest · Online available" data-ro="București · Online disponibil">Bucharest · Online available</p>
+          </div>
+          <a href="#contact" class="event-arrow" data-en="Learn more →" data-ro="Află mai mult →">Learn more →</a>
+        </div>
+        <div class="event-row reveal reveal-delay-1">
+          <div class="event-date-col" data-en="May 2026" data-ro="Mai 2026">May 2026</div>
+          <div class="event-title-col">
+            <h3 data-en="Group Session — Energetic Release" data-ro="Sesiune de Grup — Eliberare Energetică">Group Session — Energetic Release</h3>
+            <p data-en="Online · Worldwide" data-ro="Online · Worldwide">Online · Worldwide</p>
+          </div>
+          <a href="#contact" class="event-arrow" data-en="Learn more →" data-ro="Află mai mult →">Learn more →</a>
+        </div>
+        <div class="event-row reveal reveal-delay-2">
+          <div class="event-date-col" data-en="June 2026" data-ro="Iunie 2026">June 2026</div>
+          <div class="event-title-col">
+            <h3 data-en="High Vibes Retreat — Weekend Intensive" data-ro="Retreat High Vibes — Weekend Intensiv">High Vibes Retreat — Weekend Intensive</h3>
+            <p data-en="Romania · Locations TBA" data-ro="România · Locații TBA">Romania · Locations TBA</p>
+          </div>
+          <a href="#contact" class="event-arrow" data-en="Learn more →" data-ro="Află mai mult →">Learn more →</a>
+        </div>
+      </div>
+      <div class="events-cta reveal">
+        <a href="#contact" class="link-underline" data-en="View all events" data-ro="Vezi toate evenimentele">View all events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOP ─── -->
+  <section id="shop">
+    <div class="wrap section-pad">
+      <div class="shop-top reveal">
+        <span class="eyebrow" data-en="Shop" data-ro="Shop">Shop</span>
+        <h2 class="serif-title" data-en="High Vibes <em>Collection</em>" data-ro="High Vibes <em>Collection</em>">High Vibes <em>Collection</em></h2>
+        <p class="body-text" data-en="Products and resources created with love to support your transformation journey." data-ro="Produse și resurse create cu dragoste pentru a-ți susține călătoria de transformare.">Products and resources created with love to support your transformation journey.</p>
+      </div>
+      <div class="shop-grid">
+        <div class="shop-card reveal">
+          <div class="shop-img-box">
+            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="" /></div>
+          </div>
+          <div class="shop-cat" data-en="Digital" data-ro="Digital">Digital</div>
+          <div class="shop-name" data-en="Access Bars® Guide — Introduction" data-ro="Ghid Access Bars® — Introducere">Access Bars® Guide — Introduction</div>
+          <div class="shop-price">RON 79</div>
+        </div>
+        <div class="shop-card reveal reveal-delay-1">
+          <div class="shop-img-box">
+            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="" /></div>
+          </div>
+          <div class="shop-cat" data-en="Session" data-ro="Sesiune">Session</div>
+          <div class="shop-name" data-en="Access Bars® Session Voucher 60 min" data-ro="Voucher Sesiune Access Bars® 60 min">Access Bars® Session Voucher 60 min</div>
+          <div class="shop-price">RON 250</div>
+        </div>
+        <div class="shop-card reveal reveal-delay-2">
+          <div class="shop-img-box">
+            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="" /></div>
+          </div>
+          <div class="shop-cat" data-en="Package" data-ro="Pachet">Package</div>
+          <div class="shop-name" data-en="5 Sessions Package — High Vibes Bundle" data-ro="Pachet 5 Sesiuni — High Vibes Bundle">5 Sessions Package — High Vibes Bundle</div>
+          <div class="shop-price">RON 1.100</div>
+        </div>
+      </div>
+      <div class="shop-cta reveal">
+        <a href="#contact" class="link-underline" data-en="Order or enquire" data-ro="Comandă sau întreabă">Order or enquire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── NEWSLETTER ─── -->
+  <section id="newsletter">
+    <div class="wrap">
+      <span class="nl-label reveal" data-en="Stay Connected" data-ro="Rămâi conectat">Stay Connected</span>
+      <h2 class="nl-title reveal" data-en="Possibilities are expanding" data-ro="Posibilitățile se extind">Possibilities are expanding</h2>
+      <p class="nl-sub reveal" data-en="Sign up to receive news, events and inspiration." data-ro="Înscrie-te pentru noutăți, events și inspirație.">Sign up to receive news, events and inspiration.</p>
+      <form class="nl-form reveal" onsubmit="handleNL(event)">
+        <input class="nl-input" type="email" data-placeholder-en="Your email address" data-placeholder-ro="Adresa ta de email" placeholder="Your email address" required />
+        <button class="nl-btn" type="submit" data-en="Sign Up" data-ro="Abonare">Sign Up</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="wrap section-pad">
+      <div class="contact-grid">
+        <div class="contact-info-col reveal">
+          <span class="eyebrow" data-en="Contact" data-ro="Contact">Contact</span>
+          <h2 class="serif-title" data-en="Let's <em>connect</em>" data-ro="Hai să <em>vorbim</em>">Let's <em>connect</em></h2>
+          <p class="body-text" data-en="Ready to explore the infinite possibilities of your life? Reach out and let's create the change you desire together." data-ro="Ești gata să explorezi infinitele posibilități ale vieții tale? Scrie-mi și hai să creăm împreună schimbarea pe care o dorești.">Ready to explore the infinite possibilities of your life? Reach out and let's create the change you desire together.</p>
+          <div class="contact-items" style="margin-top:44px">
+            <div class="contact-item">
+              <div class="c-icon">☎</div>
+              <div><div class="c-lbl" data-en="Phone" data-ro="Telefon">Phone</div><div class="c-val"><a href="tel:+40733593809">+40 733 593 809</a></div></div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">✉</div>
+              <div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:highvibescreation@gmail.com">highvibescreation@gmail.com</a></div></div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">⊕</div>
+              <div><div class="c-lbl">Website</div><div class="c-val"><a href="https://highvibescreation.com">highvibescreation.com</a></div></div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">◎</div>
+              <div><div class="c-lbl" data-en="Location" data-ro="Locație">Location</div><div class="c-val"><a href="#" data-en="Romania &amp; Online Worldwide" data-ro="România &amp; Online Worldwide">Romania &amp; Online Worldwide</a></div></div>
+            </div>
+          </div>
+          <div class="social-row">
+            <a href="https://www.facebook.com/HighVibesCreation" target="_blank" class="social-link">Facebook</a>
+            <a href="https://www.instagram.com/highvibescreation" target="_blank" class="social-link">Instagram</a>
+          </div>
+        </div>
+        <div class="contact-form-col reveal reveal-delay-1">
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label data-en="First Name" data-ro="Prenume">First Name</label>
+                <input type="text" data-placeholder-en="Your first name" data-placeholder-ro="Prenumele tău" placeholder="Your first name" required />
+              </div>
+              <div class="form-group">
+                <label data-en="Last Name" data-ro="Nume">Last Name</label>
+                <input type="text" data-placeholder-en="Your last name" data-placeholder-ro="Numele tău" placeholder="Your last name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="email@example.com" required />
+            </div>
+            <div class="form-group">
+              <label data-en="Phone" data-ro="Telefon">Phone</label>
+              <input type="tel" placeholder="+40 7xx xxx xxx" />
+            </div>
+            <div class="form-group">
+              <label data-en="Service" data-ro="Serviciu">Service</label>
+              <select>
+                <option value="" data-en="— Choose a service —" data-ro="— Alege un serviciu —">— Choose a service —</option>
+                <option data-en="Access Bars®" data-ro="Access Bars®">Access Bars®</option>
+                <option data-en="MTVSS" data-ro="MTVSS">MTVSS</option>
+                <option data-en="Body Processes" data-ro="Procese Corporale">Body Processes</option>
+                <option data-en="Biometric Mining" data-ro="Minare Biometrică">Biometric Mining</option>
+                <option data-en="Cognitive Dissonance" data-ro="Disonanță Cognitivă">Cognitive Dissonance</option>
+                <option data-en="Online Session" data-ro="Sesiune Online">Online Session</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-en="Message" data-ro="Mesaj">Message</label>
+              <textarea data-placeholder-en="Tell me what you'd like to explore or change..." data-placeholder-ro="Spune-mi ce îți dorești să explorezi sau să schimbi..." placeholder="Tell me what you'd like to explore or change..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit" data-en="Send Message" data-ro="Trimite Mesajul">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo"><img src="assets/images/logo-color.png" alt="High Vibes Creation" /></div>
+      <p class="footer-copy">© 2026 <a href="#">High Vibes Creation</a> · <a href="https://highvibescreation.com">highvibescreation.com</a></p>
+      <p class="footer-tagline">All of Life comes to me with Ease, Joy and Glory</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Language switcher ──
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-ro').classList.toggle('active', lang === 'ro');
+
+      // Update all elements with data-en / data-ro
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (!val) return;
+        // For elements that may contain HTML (titles, hero)
+        if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'BLOCKQUOTE' || el.tagName === 'P' || el.classList.contains('hero-title')) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+        el.placeholder = el.getAttribute('data-placeholder-' + lang);
+      });
+
+      // Update select options
+      document.querySelectorAll('select option[data-' + lang + ']').forEach(opt => {
+        opt.textContent = opt.getAttribute('data-' + lang);
+      });
+
+      // Update html lang attribute
+      document.documentElement.lang = lang;
+    }
+
+    // ── Header scroll ──
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Mobile menu ──
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('open');
+    });
+    document.getElementById('mobClose').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+    document.querySelectorAll('.mob-link').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    });
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Forms ──
+    function handleContact(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = currentLang === 'ro' ? 'Trimis! ✓' : 'Sent! ✓';
+      btn.style.background = '#2a7a4a';
+      setTimeout(() => { btn.textContent = currentLang === 'ro' ? 'Trimite Mesajul' : 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
+    }
+    function handleNL(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.nl-btn');
+      btn.textContent = '✓';
+      setTimeout(() => { btn.textContent = currentLang === 'ro' ? 'Abonare' : 'Sign Up'; e.target.reset(); }, 3000);
+    }
+  </script>
+</body>
+</html>
