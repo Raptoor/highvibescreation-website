@@ -83,8 +83,7 @@
       box-shadow: 0 1px 0 var(--border);
     }
     .header-inner {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      display: flex;
       align-items: center;
       max-width: 1400px;
       margin: 0 auto;
@@ -92,12 +91,15 @@
       height: 90px;
     }
 
+    .nav-logo { margin-right: auto; }
+
     .nav-left, .nav-right {
       display: flex;
       gap: 40px;
       list-style: none;
+      align-items: center;
     }
-    .nav-right { justify-content: flex-end; align-items: center; }
+    .nav-left { margin-right: 40px; }
 
     .nav-left a, .nav-right a {
       font-family: var(--sans);
@@ -121,7 +123,7 @@
     .nav-left a:hover, .nav-right a:hover { color: var(--magenta); }
     .nav-left a:hover::after, .nav-right a:hover::after { width: 100%; }
 
-    .nav-logo { text-align: center; }
+    .nav-logo { text-align: left; }
     .nav-logo img { height: 56px; width: auto; display: inline-block; }
 
     .nav-book {
