@@ -813,18 +813,78 @@
     @media (max-width: 768px) {
       .nav-left, .nav-right { display: none; }
       .hamburger { display: flex; }
-      .nav-logo { grid-column: 1; }
-      .header-inner { grid-template-columns: auto 1fr auto; }
+
+      /* Header: logo centrat, hamburger dreapta, lang-bar stanga */
+      .header-inner {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        height: 64px;
+      }
+      .nav-logo { text-align: center; }
+      .nav-logo img { height: 44px; }
+      .hamburger {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        margin: -10px;
+      }
+      .lang-bar {
+        position: fixed;
+        top: auto;
+        bottom: auto;
+        top: 18px;
+        right: auto;
+        left: 16px;
+      }
+
+      /* Grids */
       .services-grid, .testi-grid, .shop-grid { grid-template-columns: 1fr; }
       .events-grid { grid-template-columns: 1fr; }
-      .section-pad { padding: 80px 0; }
-      footer { padding: 40px 28px; }
-      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
-      .event-row { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Spacing */
+      .section-pad { padding: 72px 0; }
+      .wrap { padding: 0 20px; }
+
+      /* Event rows */
+      .event-row { grid-template-columns: 1fr; gap: 10px; }
+      .event-row:hover { padding-left: 0; padding-right: 0; margin: 0; }
+
+      /* Hero CTA */
+      .hero-cta-wrap { flex-direction: column; align-items: center; gap: 20px; }
+      .btn-hero-primary { padding: 16px 44px; }
+
+      /* Stats */
+      .stats-row { flex-wrap: wrap; gap: 28px 40px; }
+
+      /* Cards */
+      .svc-card { padding: 40px 28px; }
+
+      /* Forms */
       .form-row { grid-template-columns: 1fr; }
       .nl-form { flex-direction: column; }
-      .stats-row { gap: 32px; }
-      .lang-bar { top: 12px; right: 16px; }
+      .nl-btn { padding: 16px; }
+
+      /* Decorative accent hides on mobile */
+      .about-img-accent { display: none; }
+
+      /* Footer */
+      footer { padding: 40px 20px; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .section-pad { padding: 56px 0; }
+      .section-pad-sm { padding: 48px 0; }
+      #quote { padding: 64px 0; }
+      #newsletter { padding: 64px 0; }
+      .services-top, .testi-top, .shop-top, .events-top { margin-bottom: 48px; }
+      .stat-num { font-size: 40px; }
+      .quote-mark { font-size: 60px; }
+      .hero-eyebrow { letter-spacing: 3px; }
     }
   </style>
 </head>
