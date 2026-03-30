@@ -1,0 +1,41 @@
+High Vibes Creation — mail (Coolify mail-api) + Cloudflare DNS
+================================================================
+
+Ai deja în Cloudflare (Email Security / DNS):
+  • SPF: v=spf1 include:_spf.mx.cloudflare.net ~all  (pentru Email Routing Cloudflare)
+  • DKIM: cf2024-1._domainkey… (cheie Cloudflare pentru serviciul lor)
+  • DMARC: _dmarc … p=none … (rapoarte la Cloudflare)
+
+1) SPF — O SINGURĂ înregistrare TXT pe numele domeniului (highvibescreation.com)
+   Trebuie să autorizeze ȘI Cloudflare Email Routing, ȘI serverul care trimite
+   mailul din formular (IP public al VPS-ului de unde iese SMTP / Coolify).
+
+   Exemplu (înlocuiește IP_VPS cu IP-ul public care face conexiunea SMTP spre exterior):
+
+   v=spf1 include:_spf.mx.cloudflare.net ip4:IP_VPS ~all
+
+   • Nu crea două înregistrări SPF separate — una singură, îmbinată ca mai sus.
+   • Dacă trimiți și de la alt IP, adaugă ip4: sau include: suplimentar în aceeași linie.
+
+2) DKIM — două contexte diferite
+   • Înregistrarea ta cf2024-1._domainkey… este pentru fluxurile Cloudflare (routing).
+   • Mailul trimis de pe VPS (Nodemailer → Postfix) folosește de obicei alte chei DKIM
+     configurate în Postfix/Rspamd. Dacă vrei DKIM și pentru acel flux, adaugă
+     înregistrările TXT/CNAME pe care ți le dă stack-ul de mail de pe server
+     (alt selector, ex. default._domainkey) — nu înlocui cheia Cloudflare dacă
+     încă o folosești pentru Email Routing.
+
+3) DMARC
+   • p=none e ok la început (monitorizare). Când SPF/DKIM sunt stabile pentru toate
+     sursele de trimitere, poți trece la p=quarantine sau p=strict.
+
+4) PTR (reverse DNS)
+   • La providerul VPS, PTR pentru IP-ul care trimite SMTP ar trebui să fie coerent
+     (ex. nume host care rezolvă înapoi la același IP).
+
+5) mail-api în Coolify
+   • Vezi coolify-deploy.txt și compose.yaml din repo — redeploy pornește automat
+     containerul dacă variabilele (ALLOWED_ORIGINS, SMTP_*) sunt setate.
+
+6) index.html
+   • MAIL_API_BASE = URL HTTPS public al API (fără / la final).
