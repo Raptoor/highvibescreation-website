@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>High Vibes Creation</title>
   <meta name="description" content="High Vibes Creation — Access Bars®, MTVSS and energy healing sessions. Empowering people to live the life they love." />
+  <link rel="canonical" href="https://highvibescreation.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://highvibescreation.com/" />
+  <meta property="og:title" content="High Vibes Creation" />
+  <meta property="og:description" content="High Vibes Creation — Access Bars®, MTVSS and energy healing sessions. Empowering people to live the life they love." />
+  <meta property="og:image" content="https://highvibescreation.com/assets/images/logo-color.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="High Vibes Creation" />
+  <meta name="twitter:description" content="High Vibes Creation — Access Bars®, MTVSS and energy healing sessions." />
   <link rel="icon" type="image/png" href="assets/images/logo-color.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,6 +40,19 @@
     }
 
     html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-track { animation: none; }
+      #home:hover .hero-photo { transform: none; }
+      .scroll-cue-line { animation: none !important; }
+      .hero-eyebrow, .hero-title, .hero-sub, .hero-cta-wrap, .scroll-cue {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
 
     body {
       font-family: var(--sans);
@@ -728,8 +750,19 @@
     .contact-item { display: flex; align-items: flex-start; gap: 16px; }
     .c-icon { font-size: 14px; color: var(--magenta); flex-shrink: 0; margin-top: 2px; }
     .c-lbl { font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 3px; }
-    .c-val a { font-family: var(--sans); font-size: 14px; color: var(--black); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+    .c-val a, .c-val span.c-val-text { font-family: var(--sans); font-size: 14px; color: var(--black); text-decoration: none; font-weight: 300; transition: color 0.2s; }
     .c-val a:hover { color: var(--magenta); }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     .social-row { display: flex; gap: 24px; margin-top: 44px; }
     .social-link {
       font-family: var(--sans);
@@ -912,10 +945,10 @@
 <body>
 
   <!-- ─── LANGUAGE SWITCHER ─── -->
-  <div class="lang-bar">
-    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
-    <span class="lang-sep">|</span>
-    <button class="lang-btn" onclick="setLang('ro')" id="btn-ro">RO</button>
+  <div class="lang-bar" role="group" aria-label="Language">
+    <button type="button" class="lang-btn active" onclick="setLang('en')" id="btn-en" aria-pressed="true">EN</button>
+    <span class="lang-sep" aria-hidden="true">|</span>
+    <button type="button" class="lang-btn" onclick="setLang('ro')" id="btn-ro" aria-pressed="false">RO</button>
   </div>
 
   <!-- ─── HEADER ─── -->
@@ -936,7 +969,7 @@
       </ul>
       <div class="mob-right">
         <a href="#contact" class="mob-book-btn" data-en="Book" data-ro="Programează">Book</a>
-        <div class="hamburger" id="hamburger">
+        <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
         </div>
       </div>
@@ -944,18 +977,18 @@
   </header>
 
   <!-- mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mob-close" id="mobClose">✕</button>
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
+    <button type="button" class="mob-close" id="mobClose" aria-label="Close menu">✕</button>
     <a href="#about" class="mob-link" data-en="Our Story" data-ro="Despre Mine">Our Story</a>
     <a href="#services" class="mob-link" data-en="Services" data-ro="Servicii">Services</a>
     <a href="#events" class="mob-link" data-en="Events" data-ro="Evenimente">Events</a>
     <a href="#shop" class="mob-link" data-en="Shop" data-ro="Shop">Shop</a>
     <a href="#contact" class="mob-link" data-en="Contact" data-ro="Contact">Contact</a>
     <a href="#contact" class="mob-link" data-en="Book a Session" data-ro="Programează">Book a Session</a>
-    <div class="mob-lang">
-      <button class="lang-btn active" onclick="setLang('en')" id="mob-btn-en">EN</button>
-      <span class="lang-sep">|</span>
-      <button class="lang-btn" onclick="setLang('ro')" id="mob-btn-ro">RO</button>
+    <div class="mob-lang" role="group" aria-label="Language">
+      <button type="button" class="lang-btn active" onclick="setLang('en')" id="mob-btn-en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button type="button" class="lang-btn" onclick="setLang('ro')" id="mob-btn-ro" aria-pressed="false">RO</button>
     </div>
   </div>
 
@@ -1186,7 +1219,7 @@
       <div class="shop-grid">
         <div class="shop-card reveal">
           <div class="shop-img-box">
-            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="" /></div>
+            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="Access Bars® Guide — Introduction" /></div>
           </div>
           <div class="shop-cat" data-en="Digital" data-ro="Digital">Digital</div>
           <div class="shop-name" data-en="Access Bars® Guide — Introduction" data-ro="Ghid Access Bars® — Introducere">Access Bars® Guide — Introduction</div>
@@ -1194,7 +1227,7 @@
         </div>
         <div class="shop-card reveal reveal-delay-1">
           <div class="shop-img-box">
-            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="" /></div>
+            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="Access Bars® Session Voucher 60 min" /></div>
           </div>
           <div class="shop-cat" data-en="Session" data-ro="Sesiune">Session</div>
           <div class="shop-name" data-en="Access Bars® Session Voucher 60 min" data-ro="Voucher Sesiune Access Bars® 60 min">Access Bars® Session Voucher 60 min</div>
@@ -1202,7 +1235,7 @@
         </div>
         <div class="shop-card reveal reveal-delay-2">
           <div class="shop-img-box">
-            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="" /></div>
+            <div class="shop-img-box-inner"><img src="assets/images/logo-color.png" alt="5 Sessions Package — High Vibes Bundle" /></div>
           </div>
           <div class="shop-cat" data-en="Package" data-ro="Pachet">Package</div>
           <div class="shop-name" data-en="5 Sessions Package — High Vibes Bundle" data-ro="Pachet 5 Sesiuni — High Vibes Bundle">5 Sessions Package — High Vibes Bundle</div>
@@ -1220,9 +1253,10 @@
     <div class="wrap">
       <span class="nl-label reveal" data-en="Stay Connected" data-ro="Rămâi conectat">Stay Connected</span>
       <h2 class="nl-title reveal" data-en="Possibilities are expanding" data-ro="Posibilitățile se extind">Possibilities are expanding</h2>
-      <p class="nl-sub reveal" data-en="Sign up to receive news, events and inspiration." data-ro="Înscrie-te pentru noutăți, events și inspirație.">Sign up to receive news, events and inspiration.</p>
+      <p class="nl-sub reveal" data-en="Sign up to receive news, events and inspiration." data-ro="Înscrie-te pentru noutăți, evenimente și inspirație.">Sign up to receive news, events and inspiration.</p>
       <form class="nl-form reveal" onsubmit="handleNL(event)">
-        <input class="nl-input" type="email" data-placeholder-en="Your email address" data-placeholder-ro="Adresa ta de email" placeholder="Your email address" required />
+        <label for="nl-email" class="visually-hidden" data-en="Email address" data-ro="Adresă email">Email address</label>
+        <input id="nl-email" class="nl-input" type="email" name="email" autocomplete="email" data-placeholder-en="Your email address" data-placeholder-ro="Adresa ta de email" placeholder="Your email address" required />
         <button class="nl-btn" type="submit" data-en="Sign Up" data-ro="Abonare">Sign Up</button>
       </form>
     </div>
@@ -1251,37 +1285,37 @@
             </div>
             <div class="contact-item">
               <div class="c-icon">◎</div>
-              <div><div class="c-lbl" data-en="Location" data-ro="Locație">Location</div><div class="c-val"><a href="#" data-en="Romania &amp; Online Worldwide" data-ro="România &amp; Online Worldwide">Romania &amp; Online Worldwide</a></div></div>
+              <div><div class="c-lbl" data-en="Location" data-ro="Locație">Location</div><div class="c-val"><span class="c-val-text" data-en="Romania &amp; Online Worldwide" data-ro="România &amp; Online Worldwide">Romania &amp; Online Worldwide</span></div></div>
             </div>
           </div>
           <div class="social-row">
-            <a href="https://www.facebook.com/HighVibesCreation" target="_blank" class="social-link">Facebook</a>
-            <a href="https://www.instagram.com/highvibescreation" target="_blank" class="social-link">Instagram</a>
+            <a href="https://www.facebook.com/HighVibesCreation" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a>
+            <a href="https://www.instagram.com/highvibescreation" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
           </div>
         </div>
         <div class="contact-form-col reveal reveal-delay-1">
           <form id="contactForm" onsubmit="handleContact(event)">
             <div class="form-row">
               <div class="form-group">
-                <label data-en="First Name" data-ro="Prenume">First Name</label>
-                <input type="text" data-placeholder-en="Your first name" data-placeholder-ro="Prenumele tău" placeholder="Your first name" required />
+                <label for="contact-first" data-en="First Name" data-ro="Prenume">First Name</label>
+                <input id="contact-first" name="firstName" type="text" data-placeholder-en="Your first name" data-placeholder-ro="Prenumele tău" placeholder="Your first name" required autocomplete="given-name" />
               </div>
               <div class="form-group">
-                <label data-en="Last Name" data-ro="Nume">Last Name</label>
-                <input type="text" data-placeholder-en="Your last name" data-placeholder-ro="Numele tău" placeholder="Your last name" required />
+                <label for="contact-last" data-en="Last Name" data-ro="Nume">Last Name</label>
+                <input id="contact-last" name="lastName" type="text" data-placeholder-en="Your last name" data-placeholder-ro="Numele tău" placeholder="Your last name" required autocomplete="family-name" />
               </div>
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="email@example.com" required />
+              <label for="contact-email" data-en="Email" data-ro="Email">Email</label>
+              <input id="contact-email" name="email" type="email" placeholder="email@example.com" required autocomplete="email" />
             </div>
             <div class="form-group">
-              <label data-en="Phone" data-ro="Telefon">Phone</label>
-              <input type="tel" placeholder="+40 7xx xxx xxx" />
+              <label for="contact-phone" data-en="Phone" data-ro="Telefon">Phone</label>
+              <input id="contact-phone" name="phone" type="tel" placeholder="+40 7xx xxx xxx" autocomplete="tel" />
             </div>
             <div class="form-group">
-              <label data-en="Service" data-ro="Serviciu">Service</label>
-              <select>
+              <label for="contact-service" data-en="Service" data-ro="Serviciu">Service</label>
+              <select id="contact-service" name="service">
                 <option value="" data-en="— Choose a service —" data-ro="— Alege un serviciu —">— Choose a service —</option>
                 <option data-en="Access Bars®" data-ro="Access Bars®">Access Bars®</option>
                 <option data-en="MTVSS" data-ro="MTVSS">MTVSS</option>
@@ -1292,8 +1326,8 @@
               </select>
             </div>
             <div class="form-group">
-              <label data-en="Message" data-ro="Mesaj">Message</label>
-              <textarea data-placeholder-en="Tell me what you'd like to explore or change..." data-placeholder-ro="Spune-mi ce îți dorești să explorezi sau să schimbi..." placeholder="Tell me what you'd like to explore or change..."></textarea>
+              <label for="contact-message" data-en="Message" data-ro="Mesaj">Message</label>
+              <textarea id="contact-message" name="message" data-placeholder-en="Tell me what you'd like to explore or change..." data-placeholder-ro="Spune-mi ce îți dorești să explorezi sau să schimbi..." placeholder="Tell me what you'd like to explore or change..."></textarea>
             </div>
             <button type="submit" class="btn-submit" data-en="Send Message" data-ro="Trimite Mesajul">Send Message</button>
           </form>
@@ -1306,7 +1340,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-logo"><img src="assets/images/logo-color.png" alt="High Vibes Creation" /></div>
-      <p class="footer-copy">© 2026 <a href="#">High Vibes Creation</a> · <a href="https://highvibescreation.com">highvibescreation.com</a></p>
+      <p class="footer-copy">© 2026 <a href="#home">High Vibes Creation</a> · <a href="https://highvibescreation.com">highvibescreation.com</a></p>
       <p class="footer-tagline">All of Life comes to me with Ease, Joy and Glory</p>
     </div>
   </footer>
@@ -1319,6 +1353,12 @@
       currentLang = lang;
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-ro').classList.toggle('active', lang === 'ro');
+      document.getElementById('mob-btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('mob-btn-ro').classList.toggle('active', lang === 'ro');
+      document.getElementById('btn-en').setAttribute('aria-pressed', String(lang === 'en'));
+      document.getElementById('btn-ro').setAttribute('aria-pressed', String(lang === 'ro'));
+      document.getElementById('mob-btn-en').setAttribute('aria-pressed', String(lang === 'en'));
+      document.getElementById('mob-btn-ro').setAttribute('aria-pressed', String(lang === 'ro'));
 
       // Update all elements with data-en / data-ro
       document.querySelectorAll('[data-en]').forEach(el => {
@@ -1353,14 +1393,33 @@
     });
 
     // ── Mobile menu ──
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.add('open');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.getElementById('mobClose').focus();
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.focus();
+    }
+    hamburger.addEventListener('click', openMobileMenu);
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openMobileMenu();
+      }
     });
-    document.getElementById('mobClose').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.remove('open');
-    });
+    document.getElementById('mobClose').addEventListener('click', closeMobileMenu);
     document.querySelectorAll('.mob-link').forEach(a => {
-      a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+      a.addEventListener('click', closeMobileMenu);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
     });
 
     // ── Scroll reveal ──
@@ -1377,13 +1436,22 @@
       const btn = e.target.querySelector('.btn-submit');
       btn.textContent = currentLang === 'ro' ? 'Trimis! ✓' : 'Sent! ✓';
       btn.style.background = '#2a7a4a';
-      setTimeout(() => { btn.textContent = currentLang === 'ro' ? 'Trimite Mesajul' : 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
+      setTimeout(() => {
+        const attr = currentLang === 'ro' ? 'data-ro' : 'data-en';
+        btn.textContent = btn.getAttribute(attr);
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
     }
     function handleNL(e) {
       e.preventDefault();
       const btn = e.target.querySelector('.nl-btn');
       btn.textContent = '✓';
-      setTimeout(() => { btn.textContent = currentLang === 'ro' ? 'Abonare' : 'Sign Up'; e.target.reset(); }, 3000);
+      setTimeout(() => {
+        const attr = currentLang === 'ro' ? 'data-ro' : 'data-en';
+        btn.textContent = btn.getAttribute(attr);
+        e.target.reset();
+      }, 3000);
     }
   </script>
 </body>
