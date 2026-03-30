@@ -1,0 +1,20 @@
+Repo public GitHub — ce NU pune niciodată în commit
+=====================================================
+
+• Parole, token-uri API, chei SSH/private (.pem, .key), cookie secrets
+• Fișiere .env cu valori reale (folosește doar .env.example ca șablon)
+• SMTP_PASS, SMTP_USER reale în cod sau în fișiere urmărite de git
+• Backup-uri de bază de date sau dump-uri
+
+Unde sunt valorile reale în producție
+• Coolify / server: Environment Variables (nu în repo)
+• Variabilele din compose sunt injectate de Coolify, nu scrise în fișier în repo
+
+Ce e OK în repo
+• .env.example — fără secrete, doar nume de variabile și exemple neutre
+• index.html cu MAIL_API_BASE = placeholder până pui URL-ul; URL-ul public al API
+  nu e „secret”, dar poți lăsa placeholder și seta la build/deploy dacă preferi
+• Adrese publice de contact (office@…) — sunt intenționat publice pe site
+
+Dacă ai comitat din greșeală un secret: rotire parolă/cheie + git history cleanup
+(sau contactează cine administrează repo-ul).

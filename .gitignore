@@ -1,2 +1,28 @@
+# ── Secrete / mediu — NU comita niciodată pe repo public ──
 .env
+.env.local
+.env.production
+.env.*.local
 mail-api/.env
+mail-api/.env.local
+mail-api/.env.production
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.pfx
+*.p12
+credentials.json
+secrets/
+.npmrc
+
+# Fișiere cu variabile reale (dacă le creezi lângă proiect)
+config.local.js
+web3forms-config.js
+
+# Editor / OS (opțional; decomentează dacă nu vrei .vscode în repo)
+.vscode/
+.DS_Store
+Thumbs.db
+
+# (Păstrăm în repo doar *.example fără parole — ex. .env.example)
