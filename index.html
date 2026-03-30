@@ -107,23 +107,39 @@
     .header-inner {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 48px;
       height: 90px;
     }
 
-    .nav-logo { margin-right: auto; }
+    .nav-logo {
+      flex-shrink: 0;
+      text-align: left;
+    }
+    .nav-logo img { height: 56px; width: auto; display: inline-block; }
 
-    .nav-left, .nav-right {
+    /* Logo stânga, tot meniul grupat în dreapta (similar lorenavlasin.com) */
+    .nav-desktop {
+      flex: 1;
       display: flex;
-      gap: 40px;
+      justify-content: flex-end;
+      align-items: center;
+      min-width: 0;
+    }
+    .nav-list {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 28px;
       list-style: none;
       align-items: center;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
     }
-    .nav-left { margin-right: 40px; }
 
-    .nav-left a, .nav-right a {
+    .nav-list a {
       font-family: var(--sans);
       font-size: 11px;
       letter-spacing: 2.5px;
@@ -133,8 +149,9 @@
       color: var(--black);
       transition: color 0.25s;
       position: relative;
+      white-space: nowrap;
     }
-    .nav-left a::after, .nav-right a::after {
+    .nav-list a::after {
       content: '';
       position: absolute;
       left: 0; bottom: -3px;
@@ -142,11 +159,8 @@
       background: var(--magenta);
       transition: width 0.3s;
     }
-    .nav-left a:hover, .nav-right a:hover { color: var(--magenta); }
-    .nav-left a:hover::after, .nav-right a:hover::after { width: 100%; }
-
-    .nav-logo { text-align: left; }
-    .nav-logo img { height: 56px; width: auto; display: inline-block; }
+    .nav-list a:hover { color: var(--magenta); }
+    .nav-list a:hover::after { width: 100%; }
 
     .nav-book {
       font-family: var(--sans);
@@ -842,6 +856,8 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .header-inner { padding: 0 28px; }
+      .nav-list { gap: 16px; }
+      .nav-list a { font-size: 10px; letter-spacing: 2px; }
       .about-grid { grid-template-columns: 1fr; gap: 56px; }
       .about-img { max-width: 480px; }
       .contact-grid { grid-template-columns: 1fr; gap: 56px; }
@@ -849,7 +865,7 @@
       .wrap { padding: 0 28px; }
     }
     @media (max-width: 768px) {
-      .nav-left, .nav-right { display: none; }
+      .nav-desktop { display: none; }
       .hamburger { display: flex; }
       .mob-right { display: flex; }
 
@@ -954,19 +970,19 @@
   <!-- ─── HEADER ─── -->
   <header id="site-header">
     <div class="header-inner">
-      <ul class="nav-left">
-        <li><a href="#about" data-en="Our Story" data-ro="Despre Mine">Our Story</a></li>
-        <li><a href="#services" data-en="Services" data-ro="Servicii">Services</a></li>
-        <li><a href="#events" data-en="Events" data-ro="Evenimente">Events</a></li>
-      </ul>
       <div class="nav-logo">
         <a href="#home"><img src="assets/images/logo-color.png" alt="High Vibes Creation" /></a>
       </div>
-      <ul class="nav-right">
-        <li><a href="#shop" data-en="Shop" data-ro="Shop">Shop</a></li>
-        <li><a href="#contact" data-en="Contact" data-ro="Contact">Contact</a></li>
-        <li><a href="#contact" class="nav-book" data-en="Book a Session" data-ro="Programează">Book a Session</a></li>
-      </ul>
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#about" data-en="Our Story" data-ro="Despre Mine">Our Story</a></li>
+          <li><a href="#services" data-en="Services" data-ro="Servicii">Services</a></li>
+          <li><a href="#events" data-en="Events" data-ro="Evenimente">Events</a></li>
+          <li><a href="#shop" data-en="Shop" data-ro="Shop">Shop</a></li>
+          <li><a href="#contact" data-en="Contact" data-ro="Contact">Contact</a></li>
+          <li><a href="#contact" class="nav-book" data-en="Book a Session" data-ro="Programează">Book a Session</a></li>
+        </ul>
+      </nav>
       <div class="mob-right">
         <a href="#contact" class="mob-book-btn" data-en="Book" data-ro="Programează">Book</a>
         <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
