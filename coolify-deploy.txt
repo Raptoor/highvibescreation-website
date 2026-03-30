@@ -1,3 +1,8 @@
+Dockerfile-uri în repo
+======================
+• Dockerfile (rădăcină) — site static nginx; copiază doar index.html + assets + nginx.conf.
+• mail-api/Dockerfile — API Node pentru formulare.
+
 Coolify — redeploy „one click” pentru mail-api (compose)
 =========================================================
 

@@ -1,0 +1,15 @@
+# Nu copia în imaginea nginx (site static)
+.git
+.gitignore
+mail-api
+compose.yaml
+.env
+.env.*
+*.example
+coolify-env.template
+coolify-deploy.txt
+cloudflare-email-setup.txt
+SECURITY-NOTES.txt
+scripts
+.dockerignore
+.vscode
