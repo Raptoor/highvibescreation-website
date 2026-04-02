@@ -209,7 +209,7 @@ header:not(.scrolled) .nav-list a:not(.nav-book):hover {
 .hero-photo {
   position: absolute;
   inset: 0;
-  background: url('images/hero.jpg') right 15%/55% auto no-repeat;
+  background: url('images/hero.jpg') center 10%/cover no-repeat;
   opacity: 0.85;
   transition: transform 6s ease;
 }
