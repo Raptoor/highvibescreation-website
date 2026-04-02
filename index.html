@@ -224,29 +224,29 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow: hidden;
       background: #111;
     }
     .hero-photo {
       position: absolute;
       inset: 0;
-      background: url('assets/images/hero.jpg') top center/cover no-repeat;
-      opacity: 0.72;
+      background: url('assets/images/hero.jpg') right 15%/55% auto no-repeat;
+      opacity: 0.85;
       transition: transform 6s ease;
     }
     #home:hover .hero-photo { transform: scale(1.03); }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.08) 25%, rgba(0,0,0,0.38) 100%);
+      background: linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.82) 38%, rgba(0,0,0,0.25) 62%, rgba(0,0,0,0.05) 100%);
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      text-align: center;
-      padding: 0 24px;
-      max-width: 820px;
+      text-align: left;
+      padding: 0 80px;
+      max-width: 54%;
     }
     .hero-eyebrow {
       font-family: var(--sans);
@@ -283,7 +283,7 @@
     .hero-cta-wrap {
       display: flex;
       gap: 24px;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       opacity: 0;
       animation: fadeUp 1.2s 1.3s forwards;
@@ -315,8 +315,8 @@
 
     .scroll-cue {
       position: absolute;
-      bottom: 36px; left: 50%;
-      transform: translateX(-50%);
+      bottom: 36px; left: 80px;
+      transform: none;
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -921,9 +921,14 @@
       .event-row { grid-template-columns: 1fr; gap: 10px; }
       .event-row:hover { padding-left: 0; padding-right: 0; margin: 0; }
 
-      /* Hero CTA */
-      .hero-cta-wrap { flex-direction: column; align-items: center; gap: 20px; }
+      /* Hero mobile - revert la centrat */
+      #home { justify-content: center; }
+      .hero-photo { background-size: cover; background-position: top center; }
+      .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.08) 25%, rgba(0,0,0,0.42) 100%); }
+      .hero-content { text-align: center; padding: 0 24px; max-width: 100%; }
+      .hero-cta-wrap { flex-direction: column; align-items: center; gap: 20px; justify-content: center; }
       .btn-hero-primary { padding: 16px 44px; }
+      .scroll-cue { left: 50%; transform: translateX(-50%); }
 
       /* Stats */
       .stats-row { flex-wrap: wrap; gap: 28px 40px; }
