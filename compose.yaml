@@ -35,6 +35,17 @@ services:
       RATE_LIMIT_CONTACT_MAX: ${RATE_LIMIT_CONTACT_MAX:-3}
       RATE_LIMIT_NEWSLETTER_MAX: ${RATE_LIMIT_NEWSLETTER_MAX:-3}
 
+  cloudflared-highvibes:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-highvibes
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    networks:
+      - highvibes-net
+    depends_on:
+      - website
+      - mail-api
+
 networks:
   highvibes-net:
     name: highvibes-net
