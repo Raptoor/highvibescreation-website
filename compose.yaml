@@ -1,27 +1,30 @@
-# Deploy Coolify: New Resource → Docker Compose → repo → compose.yaml
-#
-# Variabile: vezi coolify-env.template (listă completă + comentarii).
-# Generează SMTP_PASS aleator:  node scripts/gen-coolify-secrets.js
-#
-# ALLOWED_ORIGINS e obligatoriu — fără el, compose refuză deploy-ul (mesaj clar).
-# Postfix pe același VPS: SMTP_HOST=host.docker.internal (extra_hosts mai jos).
+name: highvibescreation
 
 services:
+  website:
+    container_name: highvibescreation-site
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - highvibes-net
+
   mail-api:
+    container_name: highvibescreation-mail-api
     build:
       context: ./mail-api
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "${MAIL_API_PORT:-3000}:3000"
+    networks:
+      - highvibes-net
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
       NODE_ENV: production
       PORT: "3000"
-      # Coolify: setează în UI sau .env — fără această variabilă deploy-ul eșuează la parse
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?ALLOWED_ORIGINS_missing_set_in_Coolify_see_coolify-env.template}
-      SMTP_HOST: ${SMTP_HOST:-host.docker.internal}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+      SMTP_HOST: ${SMTP_HOST:-}
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_SECURE: ${SMTP_SECURE:-false}
       SMTP_USER: ${SMTP_USER:-}
@@ -29,11 +32,9 @@ services:
       MAIL_FROM: ${MAIL_FROM:-website@highvibescreation.com}
       MAIL_TO: ${MAIL_TO:-office@highvibescreation.com}
       RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-60000}
-      RATE_LIMIT_CONTACT_MAX: ${RATE_LIMIT_CONTACT_MAX:-1}
-      RATE_LIMIT_NEWSLETTER_MAX: ${RATE_LIMIT_NEWSLETTER_MAX:-1}
-    healthcheck:
-      test: ["CMD", "curl", "-sf", "http://127.0.0.1:3000/health"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
+      RATE_LIMIT_CONTACT_MAX: ${RATE_LIMIT_CONTACT_MAX:-3}
+      RATE_LIMIT_NEWSLETTER_MAX: ${RATE_LIMIT_NEWSLETTER_MAX:-3}
+
+networks:
+  highvibes-net:
+    name: highvibes-net
